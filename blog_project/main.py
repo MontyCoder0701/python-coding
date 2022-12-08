@@ -64,16 +64,17 @@ def detail_post(id):
             print("제목:", post.get_title())
             print("본문:", post.get_content())
             print("조회수:", post.get_view_count())
+            target_post = post
 
     while True:
         print("Q) 수정:1, 삭제:2, 메뉴로 돌아가기: -1")
         try:
             choice = int(input(">>>"))
             if choice == 1:
-                print("수정")
+                update_post(target_post)
                 break
             elif choice == 2:
-                print("삭제")
+                delete_post(target_post)
                 break
             elif choice == -1:
                 break
@@ -81,6 +82,33 @@ def detail_post(id):
                 print("잘못 입력하였습니다.")
         except ValueError:
             print("숫자를 입력하세요.")
+
+
+def update_post(target_post):
+    """게시글 수정 함수"""
+    print("\n\n -게시글 수정-")
+    title = input("제목을 입력해주세요 \n>>>")
+    content = input("본문을 입력해주세요 \n>>>")
+    target_post.set_post(target_post.id, title, content,
+                         target_post.view_count)
+    print("게시글이 수정되었습니다")
+
+
+def delete_post(target_post):
+    post_list.remove(target_post)
+
+
+def save():
+    f = open(file_path, "w", encoding="utf8", newline="")
+    writer = csv.writer(f)
+    for post in post_list:
+        row = [post.get_id(), post.get_title(), post.get_content(),
+               post.get_view_count()]
+        writer.writerow(row)
+    f.close()
+    print("저장이 완료 되었습니다.")
+    print("프로그램 종료")
+
 
 while True:
     print("\n\n -Soo's Blog-")
@@ -100,5 +128,5 @@ while True:
             print("게시글 목록")
             list_post()
         elif choice == 3:
-            print("프로그램 종료")
+            save()
             break
