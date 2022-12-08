@@ -14,3 +14,7 @@ cd .venv\Scripts
 ```sh
 .\activate
 ```
+
+## Blog practice project
+
+Contains pure Python code that contains code for writing, editing, saving and deleting posts.
