@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("SQL_DDL.db")
+conn = sqlite3.connect("./SQL_DDL.db")
 cur = conn.cursor()
 
 INSERT_SQL = "INSERT INTO item(code, name, price) VALUES (?, ?, ?)"
