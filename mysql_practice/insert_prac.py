@@ -13,11 +13,11 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-# sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
-# val = ("John", "Highway 21")
-# mycursor.execute(sql, val)
+sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+val = ("John", "Highway 21")
+mycursor.execute(sql, val)
 
-# mydb.commit()
+mydb.commit()
 
 sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
 val = [
